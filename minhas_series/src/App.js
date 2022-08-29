@@ -1,14 +1,27 @@
 import React from 'react';
 import {
   Navbar,
-  NavbarBrand
+  NavbarBrand,
+  Collapse,
+  Nav,
+  NavItem,
+  NavLink,
+  NavbarToggler
 } from "reactstrap";
 
 function App() {
   return (
     <div className="App">
     <Navbar color = "light" light expand = "md">
-      <NavbarBrand>Minhas Séries</NavbarBrand>
+      <NavbarBrand>My Series</NavbarBrand>
+      <NavbarToggler/>
+      <Collapse isOpen = {true} navbar>
+        <Nav className = "ml-auto" navbar>
+          <NavItem>
+            <NavLink href = "/">Genres</NavLink>
+          </NavItem>
+        </Nav>
+      </Collapse>
     </Navbar>
     </div>
   );
