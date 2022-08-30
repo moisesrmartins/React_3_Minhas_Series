@@ -1,11 +1,26 @@
 import React from 'react';
 import Header from "./Header";
+import {
+  BrowserRouter as Router,
+  Route
+} from "react-router-dom";
 
-function App() {
+const Home = () => {
+  return <h1>Home</h1>
+}
+const Genres = () => {
+  return <h1>Genres</h1>
+}
+
+function App () {
   return (
-    <div className="App">
-      <Header/>
-    </div>
+    <Router>
+      <div>
+        <Header/>
+        <Route path = "/" exact component = {Home}/>
+        <Route path = "/Genres" component = {Genres}/>
+      </div>
+    </Router>
   );
 }
 

@@ -8,6 +8,7 @@ import {
   NavLink,
   NavbarToggler
 } from "reactstrap";
+import {Link} from "react-router-dom";
 
 const Header = () => {
   const [open, setOpen] = useState(false)
@@ -16,12 +17,12 @@ const Header = () => {
   }
   return (
     <Navbar color = "light" light expand = "md">
-      <NavbarBrand>My Series</NavbarBrand>
+      <NavbarBrand tag = {Link} to = "/">My Series</NavbarBrand>
       <NavbarToggler onClick = {toogle}/>
       <Collapse isOpen = {open} navbar>
         <Nav className = "ml-auto" navbar>
           <NavItem>
-            <NavLink href = "/">Genres</NavLink>
+            <NavLink tag = {Link} to = "/Genres">Genres</NavLink>
           </NavItem>
         </Nav>
       </Collapse>
