@@ -17,12 +17,16 @@ const Header = () => {
   }
   return (
     <Navbar color = "light" light expand = "md">
-      <NavbarBrand tag = {Link} to = "/">My Series</NavbarBrand>
+      <NavbarBrand>
+        <Link to = "/">My Series</Link>
+      </NavbarBrand>
       <NavbarToggler onClick = {toogle}/>
       <Collapse isOpen = {open} navbar>
         <Nav className = "ml-auto" navbar>
           <NavItem>
-            <NavLink tag = {Link} to = "/Genres">Genres</NavLink>
+            <NavLink>
+              <Link to = "/Genres">Genres</Link>
+            </NavLink>
           </NavItem>
         </Nav>
       </Collapse>

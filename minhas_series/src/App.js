@@ -2,6 +2,7 @@ import React from 'react';
 import Header from "./Header";
 import {
   BrowserRouter as Router,
+  Routes,
   Route
 } from "react-router-dom";
 
@@ -14,13 +15,13 @@ const Genres = () => {
 
 function App () {
   return (
-    <Router>
-      <div>
-        <Header/>
-        <Route path = "/" exact component = {Home}/>
-        <Route path = "/Genres" component = {Genres}/>
-      </div>
-    </Router>
+    <div>
+      <Header/>
+      <Routes>
+        <Route path = "/" element = {<Home/>}/>
+        <Route path = "/Genres" element = {<Genres/>}/>
+      </Routes>
+    </div>
   );
 }
 
