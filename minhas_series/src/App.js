@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
+import Genres from "./Genres";
 import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const Home = () => {
   return <h1>Home</h1>;
-};
-const Genres = () => {
-  return <h1>Genres</h1>;
 };
 
 function App() {
