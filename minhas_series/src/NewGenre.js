@@ -1,10 +1,20 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const NewGenre = () => {
   const [name, setName] = useState("");
   const onChange = (event) => {
     setName(event.target.value);
     console.log(event.target.value);
+  };
+  const Save = () => {
+    axios
+      .post("/api/genres", {
+        name,
+      })
+      .then((ans) => {
+        console.log(ans);
+      });
   };
 
   return (
@@ -21,7 +31,7 @@ const NewGenre = () => {
             id="name"
             placeholder="Genre Name"
           />
-          <button type="button" className="btn btn-primary">
+          <button type="button" onClick={Save} className="btn btn-primary">
             Save Gender
           </button>
         </div>
