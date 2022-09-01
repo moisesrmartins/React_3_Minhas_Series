@@ -21,6 +21,17 @@ const Genres = () => {
     );
   };
 
+  if (data.length === 0) {
+    return (
+      <div className="container">
+        <h1>Genres</h1>
+        <div className="alert alert-warning" role="alert">
+          THERE ARE NO GENRES CREATED
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="container">
       <h1>Genres</h1>

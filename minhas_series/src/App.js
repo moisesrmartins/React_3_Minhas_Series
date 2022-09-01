@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import Genres from "./Genres";
+import NewGenre from "./NewGenre";
 import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -22,6 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Genres" element={<Genres />} />
+        <Route path="/Genres/NewGenre" element={<NewGenre />} />
       </Routes>
       <pre>{JSON.stringify(data)}</pre>
     </div>
