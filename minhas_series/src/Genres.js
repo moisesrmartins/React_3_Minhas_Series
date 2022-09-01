@@ -9,6 +9,13 @@ const Genres = () => {
       setData(ans.data.data);
     });
   }, []);
+  const deleteGenre = (id) => {
+    axios.delete("/api/genres/" + id).then((ans) => {
+      const filter = data.filter((item) => item.id !== id);
+      setData(filter);
+      console.log(ans);
+    });
+  };
 
   const renderLine = (record) => {
     return (
@@ -16,7 +23,12 @@ const Genres = () => {
         <th scope="row">{record.id}</th>
         <td>{record.name}</td>
         <td>
-          <button>+</button>
+          <button
+            className="btn btn-dark"
+            onClick={() => deleteGenre(record.id)}
+          >
+            Remove
+          </button>
         </td>
       </tr>
     );

@@ -24,6 +24,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/Genres" element={<Genres />} />
         <Route path="/Genres/NewGenre" element={<NewGenre />} />
+        <Route path="/NewGenre" element={<NewGenre />} />
       </Routes>
       <pre>{JSON.stringify(data)}</pre>
     </div>

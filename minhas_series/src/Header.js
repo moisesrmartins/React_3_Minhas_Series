@@ -28,6 +28,11 @@ const Header = () => {
               <Link to="/Genres">Genres</Link>
             </NavLink>
           </NavItem>
+          <NavItem>
+            <NavLink>
+              <Link to="/NewGenre">New Genre</Link>
+            </NavLink>
+          </NavItem>
         </Nav>
       </Collapse>
     </Navbar>
