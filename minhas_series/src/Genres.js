@@ -9,8 +9,20 @@ const Genres = () => {
     });
   }, []);
 
+  const renderLine = (record) => {
+    return (
+      <tr>
+        <th scope="row">{record.id}</th>
+        <td>{record.name}</td>
+        <td>
+          <button>+</button>
+        </td>
+      </tr>
+    );
+  };
+
   return (
-    <div>
+    <div className="container">
       <h1>Genres</h1>
       <table className="table table-dark">
         <thead>
@@ -20,15 +32,8 @@ const Genres = () => {
             <th scope="col">Actions</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Moisés</td>
-            <td></td>
-          </tr>
-        </tbody>
+        <tbody>{data.map(renderLine)}</tbody>
       </table>
-      <pre>{JSON.stringify(data)}</pre>
     </div>
   );
 };
