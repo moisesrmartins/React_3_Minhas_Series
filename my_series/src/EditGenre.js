@@ -1,17 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 
-const NewGenre = () => {
+const EditGenre = ({ match }) => {
   const [name, setName] = useState("");
   const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    axios.get("/api/Genres/" + match.params.id).then((ans) => {
+      setName(ans.data.name);
+      console.log(ans);
+    });
+  }, []);
+
+  console.log(match);
+
   const onChange = (event) => {
     setName(event.target.value);
     console.log(event.target.value);
   };
+
   const Save = () => {
     axios
-      .post("/api/genres", {
+      .put("/api/Genres/", {
         name,
       })
       .then((ans) => {
@@ -21,12 +32,12 @@ const NewGenre = () => {
   };
 
   if (success) {
-    return <Navigate to="/Genre" />;
+    return <Navigate to="/Genres" />;
   }
 
   return (
     <div className="container">
-      <h1>New Genre</h1>
+      <h1>Edit Genre</h1>
       <form>
         <div className="form-group">
           <label htmlFor="name">Name</label>
@@ -39,7 +50,7 @@ const NewGenre = () => {
             placeholder="Genre Name"
           />
           <button type="button" onClick={Save} className="btn btn-primary">
-            Save Gender
+            Edit Gender
           </button>
         </div>
       </form>
@@ -47,4 +58,4 @@ const NewGenre = () => {
   );
 };
 
-export default NewGenre;
+export default EditGenre;

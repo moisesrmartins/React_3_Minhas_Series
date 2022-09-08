@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 const Genres = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    axios.get("/api/genres").then((ans) => {
+    axios.get("/api/Genres").then((ans) => {
       setData(ans.data.data);
     });
   }, []);
   const deleteGenre = (id) => {
-    axios.delete("/api/genres/" + id).then((ans) => {
+    axios.delete("/api/Genres/" + id).then((ans) => {
       const filter = data.filter((item) => item.id !== id);
       setData(filter);
       console.log(ans);
@@ -29,6 +29,7 @@ const Genres = () => {
           >
             Remove
           </button>
+          <Link to={"/Genres/" + record.id}>Edit</Link>
         </td>
       </tr>
     );

@@ -2,8 +2,14 @@ import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import Genres from "./Genres";
 import NewGenre from "./NewGenre";
+import EditGenre from "./EditGenre";
 import axios from "axios";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useParams,
+} from "react-router-dom";
 
 const Home = () => {
   return <h1>Home</h1>;
@@ -22,9 +28,10 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Genres" element={<Genres />} />
+        <Route path="/Genres/:id" element={<EditGenre />} />
         <Route path="/Genres/NewGenre" element={<NewGenre />} />
         <Route path="/NewGenre" element={<NewGenre />} />
+        <Route path="/Genres" element={<Genres />} />
       </Routes>
       <pre>{JSON.stringify(data)}</pre>
     </div>
