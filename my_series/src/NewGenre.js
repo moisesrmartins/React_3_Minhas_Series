@@ -9,14 +9,14 @@ const NewGenre = () => {
     setName(event.target.value);
     console.log(event.target.value);
   };
-  const Save = () => {
+  const save = () => {
     axios
-      .post("/api/genres", {
+      .post("/api/Genres", {
         name,
       })
-      .then((ans) => {
+      .then((res) => {
         setSuccess(true);
-        console.log(ans);
+        console.log(res);
       });
   };
 
@@ -38,7 +38,7 @@ const NewGenre = () => {
             id="name"
             placeholder="Genre Name"
           />
-          <button type="button" onClick={Save} className="btn btn-primary">
+          <button type="button" onClick={save} className="btn btn-primary">
             Save Gender
           </button>
         </div>

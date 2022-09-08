@@ -18,6 +18,27 @@
     },
     "3": {
       "name": "Terror"
+    },
+    "4": {
+      "name": "Fiction"
+    },
+    "5": {
+      "name": "Adventure"
+    },
+    "6": {
+      "name": "Documentary"
+    },
+    "7": {
+      "name": "Drama"
+    },
+    "8": {
+      "name": "Romance"
+    },
+    "9": {
+      "name": "Real Facts"
+    },
+    "10": {
+      "name": "Thriller"
     }
   },
   "count": 0

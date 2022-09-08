@@ -4,13 +4,15 @@ import { Link } from "react-router-dom";
 
 const Genres = () => {
   const [data, setData] = useState([]);
+
   useEffect(() => {
-    axios.get("/api/Genres").then((ans) => {
+    axios.get("/api/genres").then((ans) => {
       setData(ans.data.data);
     });
   }, []);
+
   const deleteGenre = (id) => {
-    axios.delete("/api/Genres/" + id).then((ans) => {
+    axios.delete("/api/genres/" + id).then((ans) => {
       const filter = data.filter((item) => item.id !== id);
       setData(filter);
       console.log(ans);
@@ -29,7 +31,9 @@ const Genres = () => {
           >
             Remove
           </button>
-          <Link to={"/Genres/" + record.id}>Edit</Link>
+          <Link className="btn btn-dark" to={"/Genres/" + record.id}>
+            Edit
+          </Link>
         </td>
       </tr>
     );
@@ -50,7 +54,9 @@ const Genres = () => {
     <div className="container">
       <h1>Genres</h1>
       <div>
-        <Link to="/Genres/NewGenre">New Genre</Link>
+        <Link className="btn btn-light" to="/Genres/NewGenre">
+          New Genre
+        </Link>
       </div>
       <table className="table table-dark">
         <thead>

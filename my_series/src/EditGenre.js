@@ -1,33 +1,33 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 
 const EditGenre = ({ match }) => {
   const [name, setName] = useState("");
   const [success, setSuccess] = useState(false);
-
-  useEffect(() => {
-    axios.get("/api/Genres/" + match.params.id).then((ans) => {
-      setName(ans.data.name);
-      console.log(ans);
-    });
-  }, []);
-
-  console.log(match);
-
   const onChange = (event) => {
     setName(event.target.value);
     console.log(event.target.value);
   };
 
-  const Save = () => {
+  let { id } = useParams(match);
+
+  useEffect(() => {
+    axios.get("/api/Genres/" + { id }).then((ans) => {
+      setName(ans.data.name);
+    });
+  }, [id]);
+
+  console.log(match);
+
+  const save = () => {
     axios
-      .put("/api/Genres/", {
+      .put("/api/Genres/" + id, {
         name,
       })
-      .then((ans) => {
+      .then((res) => {
         setSuccess(true);
-        console.log(ans);
+        console.log(res);
       });
   };
 
@@ -49,7 +49,7 @@ const EditGenre = ({ match }) => {
             id="name"
             placeholder="Genre Name"
           />
-          <button type="button" onClick={Save} className="btn btn-primary">
+          <button type="button" onClick={save} className="btn btn-primary">
             Edit Gender
           </button>
         </div>
