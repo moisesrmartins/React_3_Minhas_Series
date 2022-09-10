@@ -29,6 +29,13 @@ const Header = () => {
           <Nav className="ml-auto" navbar>
             <NavItem>
               <NavLink>
+                <Link className="btn btn-light" to="/Series">
+                  Series
+                </Link>
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink>
                 <Link className="btn btn-light" to="/Genres">
                   Genres
                 </Link>

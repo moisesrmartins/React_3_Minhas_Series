@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import Genres from "./Genres";
+import Series from "./Series";
 import NewGenre from "./NewGenre";
 import EditGenre from "./EditGenre";
 import { Routes, Route } from "react-router-dom";
@@ -19,6 +20,7 @@ function App() {
         <Route path="/Genres/:id" element={<EditGenre />} />
         <Route path="/NewGenre" element={<NewGenre />} />
         <Route path="/Genres" element={<Genres />} />
+        <Route path="/Series" element={<Series />} />
       </Routes>
     </div>
   );
