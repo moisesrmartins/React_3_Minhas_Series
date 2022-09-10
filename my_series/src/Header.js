@@ -18,30 +18,32 @@ const Header = () => {
 
   return (
     <Navbar color="light" light expand="md">
-      <NavbarBrand>
-        <Link className="btn btn-light" to="/">
-          My Series
-        </Link>
-      </NavbarBrand>
-      <NavbarToggler onClick={toogle} />
-      <Collapse isOpen={open} navbar>
-        <Nav className="ml-auto" navbar>
-          <NavItem>
-            <NavLink>
-              <Link className="btn btn-light" to="/Genres">
-                Genres
-              </Link>
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink>
-              <Link className="btn btn-light" to="/NewGenre">
-                NewGenre
-              </Link>
-            </NavLink>
-          </NavItem>
-        </Nav>
-      </Collapse>
+      <div className="container">
+        <NavbarBrand>
+          <Link className="btn btn-light" to="/">
+            My Series
+          </Link>
+        </NavbarBrand>
+        <NavbarToggler onClick={toogle} />
+        <Collapse isOpen={open} navbar>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink>
+                <Link className="btn btn-light" to="/Genres">
+                  Genres
+                </Link>
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink>
+                <Link className="btn btn-light" to="/NewGenre">
+                  NewGenre
+                </Link>
+              </NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </div>
     </Navbar>
   );
 };
