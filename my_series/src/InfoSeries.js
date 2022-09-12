@@ -1,14 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 
-const NewSeries = () => {
+const InfoSeries = ({ match }) => {
   const [name, setName] = useState("");
   const [success, setSuccess] = useState(false);
+
+  let { id } = useParams(match);
+
+  const [data, setData] = useState({});
+  useEffect(() => {
+    axios.get("/api/Series/" + id).then((ans) => {
+      setData(ans.data);
+    });
+  }, [id]);
+
   const onChange = (event) => {
     setName(event.target.value);
     console.log(event.target.value);
   };
+
   const save = () => {
     axios
       .post("/api/Series", {
@@ -26,7 +37,8 @@ const NewSeries = () => {
 
   return (
     <div className="container">
-      <h1>New Series</h1>
+      <h1>Info Series</h1>
+      <pre>{JSON.stringify(data)}</pre>
       <form>
         <div className="form-group">
           <label htmlFor="name">Name</label>
@@ -47,4 +59,4 @@ const NewSeries = () => {
   );
 };
 
-export default NewSeries;
+export default InfoSeries;

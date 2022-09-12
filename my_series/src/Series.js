@@ -32,7 +32,7 @@ const Series = () => {
             Remove
           </button>
           <Link className="btn btn-dark" to={"/Series/" + record.id}>
-            Edit
+            Info
           </Link>
         </td>
       </tr>

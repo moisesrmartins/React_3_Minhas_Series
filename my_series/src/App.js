@@ -5,6 +5,7 @@ import NewGenre from "./NewGenre";
 import EditGenre from "./EditGenre";
 import Series from "./Series";
 import NewSeries from "./NewSeries";
+import InfoSeries from "./InfoSeries";
 import { Routes, Route } from "react-router-dom";
 
 const Home = () => {
@@ -23,6 +24,7 @@ function App() {
         <Route path="/Genres" element={<Genres />} />
         <Route path="/Series" element={<Series />} />
         <Route path="/Series/NewSeries" element={<NewSeries />} />
+        <Route path="/Series/:id" element={<InfoSeries />} />
         <Route path="/NewSeries" element={<NewSeries />} />
       </Routes>
     </div>
