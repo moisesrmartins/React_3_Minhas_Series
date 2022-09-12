@@ -54,7 +54,7 @@ const Series = () => {
     <div className="container">
       <h1>Series</h1>
       <div>
-        <Link className="btn btn-light" to="/Series/NewGenre">
+        <Link className="btn btn-light" to="/Series/NewSeries">
           New Series
         </Link>
       </div>

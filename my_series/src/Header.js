@@ -44,7 +44,14 @@ const Header = () => {
             <NavItem>
               <NavLink>
                 <Link className="btn btn-light" to="/NewGenre">
-                  NewGenre
+                  New Genre
+                </Link>
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink>
+                <Link className="btn btn-light" to="/NewSeries">
+                  New Series
                 </Link>
               </NavLink>
             </NavItem>
