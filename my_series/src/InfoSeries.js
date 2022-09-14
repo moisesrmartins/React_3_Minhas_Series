@@ -6,6 +6,7 @@ import { Badge } from "reactstrap";
 const InfoSeries = ({ match }) => {
   const [name, setName] = useState("");
   const [success, setSuccess] = useState(false);
+  const [mode, setMode] = useState("");
 
   let { id } = useParams(match);
 
@@ -63,6 +64,8 @@ const InfoSeries = ({ match }) => {
                 <h1 className="font-weight-light text-white">{data.name}</h1>
                 <div className="lead text-white">
                   <Badge color="success">Watched</Badge>
+                </div>
+                <div className="lead">
                   <Badge color="warning">To Watch</Badge>
                 </div>
               </div>
@@ -71,26 +74,44 @@ const InfoSeries = ({ match }) => {
         </div>
       </header>
 
-      <div className="container">
-        <h1>Info Series</h1>
-        <pre>{JSON.stringify(data)}</pre>
-        <form>
-          <div className="form-group">
-            <label htmlFor="name">Name</label>
-            <input
-              type="text"
-              value={name}
-              onChange={onChange}
-              className="form-control"
-              id="name"
-              placeholder="Series Name"
-            />
-            <button type="button" onClick={save} className="btn btn-primary">
-              Save Series
-            </button>
-          </div>
-        </form>
+      <div>
+        <button
+          type="button"
+          class="btn btn-light"
+          onClick={() => setMode("Coment")}
+        >
+          Coment
+        </button>
       </div>
+
+      {mode === "Coment" && (
+        <div className="container">
+          <h1>Info Series</h1>
+          <button
+            type="button"
+            class="btn btn-light"
+            onClick={() => setMode("Cancel Coment")}
+          >
+            Cancel Coment
+          </button>
+          <form>
+            <div className="form-group">
+              <label htmlFor="name">Name</label>
+              <input
+                type="text"
+                value={name}
+                onChange={onChange}
+                className="form-control"
+                id="name"
+                placeholder="Series Name"
+              />
+              <button type="button" onClick={save} className="btn btn-primary">
+                Save Series
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
     </div>
   );
 };
