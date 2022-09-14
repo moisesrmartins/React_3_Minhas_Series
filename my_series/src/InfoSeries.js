@@ -15,6 +15,15 @@ const InfoSeries = ({ match }) => {
     });
   }, [id]);
 
+  const masterHeader = {
+    height: "50vh",
+    minHeight: "500px",
+    backgroundImage: `url(${data.background})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  };
+
   const onChange = (event) => {
     setName(event.target.value);
     console.log(event.target.value);
@@ -36,25 +45,47 @@ const InfoSeries = ({ match }) => {
   }
 
   return (
-    <div className="container">
-      <h1>Info Series</h1>
-      <pre>{JSON.stringify(data)}</pre>
-      <form>
-        <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            value={name}
-            onChange={onChange}
-            className="form-control"
-            id="name"
-            placeholder="Series Name"
-          />
-          <button type="button" onClick={save} className="btn btn-primary">
-            Save Series
-          </button>
+    <div>
+      <header style={masterHeader}>
+        <div className="h-100" style={{ background: "rgba(0,0,0,0.7)" }}>
+          <div className="h-100 container">
+            <div className="row">
+              <div className="col-3">
+                <img
+                  alt={data.name}
+                  className="img-fluid img-thumbnail"
+                  style={{ background: "rgba(0,0,0,0.7)" }}
+                  src={data.poster}
+                />
+              </div>
+              <div className="col-8">
+                <h1 className="font-weight-light text-white">{data.name}</h1>
+              </div>
+            </div>
+          </div>
         </div>
-      </form>
+      </header>
+
+      <div className="container">
+        <h1>Info Series</h1>
+        <pre>{JSON.stringify(data)}</pre>
+        <form>
+          <div className="form-group">
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              value={name}
+              onChange={onChange}
+              className="form-control"
+              id="name"
+              placeholder="Series Name"
+            />
+            <button type="button" onClick={save} className="btn btn-primary">
+              Save Series
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
