@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Navigate, useParams } from "react-router-dom";
+import { Badge } from "reactstrap";
 
 const InfoSeries = ({ match }) => {
   const [name, setName] = useState("");
@@ -49,7 +50,7 @@ const InfoSeries = ({ match }) => {
       <header style={masterHeader}>
         <div className="h-100" style={{ background: "rgba(0,0,0,0.7)" }}>
           <div className="h-100 container">
-            <div className="row">
+            <div className="row h-100 align-items-center">
               <div className="col-3">
                 <img
                   alt={data.name}
@@ -60,6 +61,10 @@ const InfoSeries = ({ match }) => {
               </div>
               <div className="col-8">
                 <h1 className="font-weight-light text-white">{data.name}</h1>
+                <div className="lead text-white">
+                  <Badge color="success">Watched</Badge>
+                  <Badge color="warning">To Watch</Badge>
+                </div>
               </div>
             </div>
           </div>
