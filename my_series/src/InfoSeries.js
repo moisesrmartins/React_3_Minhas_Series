@@ -4,7 +4,7 @@ import { Navigate, useParams } from "react-router-dom";
 import { Badge } from "reactstrap";
 
 const InfoSeries = ({ match }) => {
-  const [name, setName] = useState("");
+  const [form, setForm] = useState({});
   const [success, setSuccess] = useState(false);
   const [mode, setMode] = useState("");
 
@@ -14,6 +14,7 @@ const InfoSeries = ({ match }) => {
   useEffect(() => {
     axios.get("/api/Series/" + id).then((ans) => {
       setData(ans.data);
+      setForm(ans.data);
     });
   }, [id]);
 
@@ -26,15 +27,15 @@ const InfoSeries = ({ match }) => {
     backgroundRepeat: "no-repeat",
   };
 
-  const onChange = (event) => {
-    setName(event.target.value);
+  const onChange = (field) => (event) => {
+    setForm({ ...form, [field]: event.target.value });
     console.log(event.target.value);
   };
 
   const save = () => {
     axios
       .post("/api/Series", {
-        name,
+        form,
       })
       .then((res) => {
         setSuccess(true);
@@ -77,7 +78,47 @@ const InfoSeries = ({ match }) => {
       <div>
         <button
           type="button"
-          class="btn btn-light"
+          class="btn btn-primary"
+          onClick={() => setMode("Edit")}
+        >
+          Edit
+        </button>
+      </div>
+
+      {mode === "Edit" && (
+        <div className="container">
+          <h1>Info Series</h1>
+          <pre>{JSON.stringify(form)}</pre>
+          <button
+            type="button"
+            class="btn btn-danger"
+            onClick={() => setMode("Cancel Edit")}
+          >
+            Cancel Edit
+          </button>
+          <form>
+            <div className="form-group">
+              <label htmlFor="name">Name</label>
+              <input
+                type="text"
+                value={form.name}
+                onChange={onChange("name")}
+                className="form-control"
+                id="name"
+                placeholder="Series Name"
+              />
+              <button type="button" onClick={save} className="btn btn-success">
+                Edit Series
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
+
+      <div>
+        <button
+          type="button"
+          class="btn btn-primary"
           onClick={() => setMode("Coment")}
         >
           Coment
@@ -87,26 +128,27 @@ const InfoSeries = ({ match }) => {
       {mode === "Coment" && (
         <div className="container">
           <h1>Info Series</h1>
+          <pre>{JSON.stringify(form)}</pre>
           <button
             type="button"
-            class="btn btn-light"
+            class="btn btn-danger"
             onClick={() => setMode("Cancel Coment")}
           >
             Cancel Coment
           </button>
           <form>
             <div className="form-group">
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name">Coment</label>
               <input
                 type="text"
-                value={name}
-                onChange={onChange}
+                value={form.coment}
+                onChange={onChange("coment")}
                 className="form-control"
                 id="name"
-                placeholder="Series Name"
+                placeholder="Coment Series"
               />
-              <button type="button" onClick={save} className="btn btn-primary">
-                Save Series
+              <button type="button" onClick={save} className="btn btn-success">
+                Save Coment
               </button>
             </div>
           </form>
