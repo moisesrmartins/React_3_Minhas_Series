@@ -6,7 +6,7 @@ import { Badge } from "reactstrap";
 const InfoSeries = ({ match }) => {
   const [form, setForm] = useState({});
   const [success, setSuccess] = useState(false);
-  const [mode, setMode] = useState("");
+  const [mode, setMode] = useState("Edit/Coment");
 
   let { id } = useParams(match);
 
@@ -33,14 +33,10 @@ const InfoSeries = ({ match }) => {
   };
 
   const save = () => {
-    axios
-      .post("/api/Series", {
-        form,
-      })
-      .then((res) => {
-        setSuccess(true);
-        console.log(res);
-      });
+    axios.put("/api/Series" + id, form).then((res) => {
+      setSuccess(true);
+      console.log(res);
+    });
   };
 
   if (success) {
@@ -78,24 +74,17 @@ const InfoSeries = ({ match }) => {
       <div>
         <button
           type="button"
-          class="btn btn-primary"
-          onClick={() => setMode("Edit")}
+          className="btn btn-primary"
+          onClick={() => setMode("Edit/Coment")}
         >
-          Edit
+          Edit/Coment
         </button>
       </div>
 
-      {mode === "Edit" && (
+      {mode === "Edit/Coment" && (
         <div className="container">
           <h1>Info Series</h1>
           <pre>{JSON.stringify(form)}</pre>
-          <button
-            type="button"
-            class="btn btn-danger"
-            onClick={() => setMode("Cancel Edit")}
-          >
-            Cancel Edit
-          </button>
           <form>
             <div className="form-group">
               <label htmlFor="name">Name</label>
@@ -107,37 +96,7 @@ const InfoSeries = ({ match }) => {
                 id="name"
                 placeholder="Series Name"
               />
-              <button type="button" onClick={save} className="btn btn-success">
-                Edit Series
-              </button>
-            </div>
-          </form>
-        </div>
-      )}
 
-      <div>
-        <button
-          type="button"
-          class="btn btn-primary"
-          onClick={() => setMode("Coment")}
-        >
-          Coment
-        </button>
-      </div>
-
-      {mode === "Coment" && (
-        <div className="container">
-          <h1>Info Series</h1>
-          <pre>{JSON.stringify(form)}</pre>
-          <button
-            type="button"
-            class="btn btn-danger"
-            onClick={() => setMode("Cancel Coment")}
-          >
-            Cancel Coment
-          </button>
-          <form>
-            <div className="form-group">
               <label htmlFor="name">Coment</label>
               <input
                 type="text"
@@ -147,8 +106,16 @@ const InfoSeries = ({ match }) => {
                 id="name"
                 placeholder="Coment Series"
               />
+
               <button type="button" onClick={save} className="btn btn-success">
-                Save Coment
+                Save Edit/Coment
+              </button>
+              <button
+                type="button"
+                className="btn btn-danger"
+                onClick={() => setMode("Cancel Coment")}
+              >
+                Cancel Edit/Coment
               </button>
             </div>
           </form>
