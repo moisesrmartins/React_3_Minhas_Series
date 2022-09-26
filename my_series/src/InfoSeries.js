@@ -8,9 +8,13 @@ const InfoSeries = ({ match }) => {
     name: "",
   });
   const [success, setSuccess] = useState(false);
+
   const [mode, setMode] = useState("Edit/Coment");
+
   const [genres, setGenres] = useState([]);
+
   const [genreId, setGenreId] = useState("");
+
   const [genreName, setGenreName] = useState("");
 
   let { id } = useParams(match);
@@ -28,15 +32,18 @@ const InfoSeries = ({ match }) => {
     axios.get("/api/Genres").then((res) => {
       setGenres(res.data.data);
       const genres = res.data.data;
+
       console.log("genreId", id);
-      const finder = genres.find((value) => data.genre !== value.name);
+      const finder = genres.find((value) => data.genres !== value.name);
+
       if (finder) {
         setGenreId(finder.id);
         setGenreName(finder.name);
       }
+
       console.log("find", finder);
     });
-  }, [data.genre, data.name, id]);
+  }, [data.genres, data.name, id]);
 
   const masterHeader = {
     height: "50vh",
@@ -89,6 +96,7 @@ const InfoSeries = ({ match }) => {
                   src={data.poster}
                 />
               </div>
+
               <div className="col-8">
                 <h1 className="font-weight-light text-white">{data.name}</h1>
                 <div className="lead text-white">
@@ -96,11 +104,13 @@ const InfoSeries = ({ match }) => {
                     <Badge color="warning">To Watch</Badge>
                   )}
                 </div>
+
                 <div className="lead">
                   {data.status === "Watched" && (
                     <Badge color="success">Watched</Badge>
                   )}
                 </div>
+
                 <div className="lead text-white" onChange={onChangeGenre}>
                   Genre: {genreName}
                 </div>
@@ -123,11 +133,11 @@ const InfoSeries = ({ match }) => {
       {mode === "Edit/Coment" && (
         <div className="container">
           <h1>Edit/Coment</h1>
-          <pre>{JSON.stringify(form)}</pre>
 
           <form>
             <div className="form-group">
               <label htmlFor="name">Name</label>
+
               <input
                 type="text"
                 value={form.name}
@@ -138,6 +148,7 @@ const InfoSeries = ({ match }) => {
               />
 
               <label htmlFor="name">Coment</label>
+
               <input
                 type="text"
                 value={form.coment}
@@ -149,6 +160,7 @@ const InfoSeries = ({ match }) => {
 
               <div className="form-group">
                 <label htmlFor="name">Genres</label>
+
                 <select
                   className="form-control"
                   onChange={onChangeGenre}

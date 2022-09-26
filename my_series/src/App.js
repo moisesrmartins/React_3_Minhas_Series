@@ -16,12 +16,15 @@ function App() {
   return (
     <div>
       <Header />
+
       <Routes>
         <Route path="/" element={<Home />} />
+
         <Route path="/Genres/NewGenre" element={<NewGenre />} />
         <Route path="/Genres/:id" element={<EditGenre />} />
         <Route path="/NewGenre" element={<NewGenre />} />
         <Route path="/Genres" element={<Genres />} />
+
         <Route path="/Series" element={<Series />} />
         <Route path="/Series/NewSeries" element={<NewSeries />} />
         <Route path="/Series/:id" element={<InfoSeries />} />

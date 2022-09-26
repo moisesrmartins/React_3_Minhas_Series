@@ -24,7 +24,9 @@ const Header = () => {
             My Series
           </Link>
         </NavbarBrand>
+
         <NavbarToggler onClick={toogle} />
+
         <Collapse isOpen={open} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
@@ -34,6 +36,15 @@ const Header = () => {
                 </Link>
               </NavLink>
             </NavItem>
+
+            <NavItem>
+              <NavLink>
+                <Link className="btn btn-light" to="/NewSeries">
+                  New Series
+                </Link>
+              </NavLink>
+            </NavItem>
+
             <NavItem>
               <NavLink>
                 <Link className="btn btn-light" to="/Genres">
@@ -41,17 +52,11 @@ const Header = () => {
                 </Link>
               </NavLink>
             </NavItem>
+
             <NavItem>
               <NavLink>
                 <Link className="btn btn-light" to="/NewGenre">
                   New Genre
-                </Link>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink>
-                <Link className="btn btn-light" to="/NewSeries">
-                  New Series
                 </Link>
               </NavLink>
             </NavItem>

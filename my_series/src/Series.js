@@ -23,7 +23,9 @@ const Series = () => {
     return (
       <tr key={record.id}>
         <th scope="row">{record.id}</th>
+
         <td>{record.name}</td>
+
         <td>
           <button
             className="btn btn-dark"
@@ -31,6 +33,7 @@ const Series = () => {
           >
             Remove
           </button>
+
           <Link className="btn btn-dark" to={"/Series/" + record.id}>
             Info
           </Link>
@@ -43,6 +46,7 @@ const Series = () => {
     return (
       <div className="container">
         <h1>Series</h1>
+
         <div className="alert alert-warning" role="alert">
           THERE ARE NO SERIES CREATED
         </div>
@@ -53,11 +57,13 @@ const Series = () => {
   return (
     <div className="container">
       <h1>Series</h1>
+
       <div>
         <Link className="btn btn-light" to="/Series/NewSeries">
           New Series
         </Link>
       </div>
+
       <table className="table table-dark">
         <thead>
           <tr>
@@ -66,6 +72,7 @@ const Series = () => {
             <th scope="col">Actions</th>
           </tr>
         </thead>
+
         <tbody>{data.map(renderLine)}</tbody>
       </table>
     </div>

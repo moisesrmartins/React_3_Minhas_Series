@@ -3,7 +3,7 @@
     "1": {
       "name": "La casa de papel",
       "status": "WATCHED",
-      "genre_id": 1,
+      "genre_id": null,
       "comments": "",
       "poster": "//image.tmdb.org/t/p/original/qUmlmYWx3WndM01DHOTrmeiklVW.jpg",
       "background": "//image.tmdb.org/t/p/original/gFZriCkpJYsApPZEF3jhxL4yLzG.jpg"

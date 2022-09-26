@@ -4,7 +4,9 @@ import { Navigate, useParams } from "react-router-dom";
 
 const EditGenre = ({ match }) => {
   const [name, setName] = useState("");
+
   const [success, setSuccess] = useState(false);
+
   const onChange = (event) => {
     setName(event.target.value);
     console.log(event.target.value);
@@ -38,9 +40,11 @@ const EditGenre = ({ match }) => {
   return (
     <div className="container">
       <h1>Edit Genre</h1>
+
       <form>
         <div className="form-group">
           <label htmlFor="name">Name</label>
+
           <input
             type="text"
             value={name}
@@ -49,6 +53,7 @@ const EditGenre = ({ match }) => {
             id="name"
             placeholder="Genre Name"
           />
+
           <button type="button" onClick={save} className="btn btn-primary">
             Edit Gender
           </button>

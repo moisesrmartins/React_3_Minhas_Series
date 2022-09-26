@@ -4,11 +4,14 @@ import { Navigate } from "react-router-dom";
 
 const NewGenre = () => {
   const [name, setName] = useState("");
+
   const [success, setSuccess] = useState(false);
+
   const onChange = (event) => {
     setName(event.target.value);
     console.log(event.target.value);
   };
+
   const save = () => {
     axios
       .post("/api/Genres", {
@@ -27,9 +30,11 @@ const NewGenre = () => {
   return (
     <div className="container">
       <h1>New Genre</h1>
+
       <form>
         <div className="form-group">
           <label htmlFor="name">Name</label>
+
           <input
             type="text"
             value={name}
@@ -38,6 +43,7 @@ const NewGenre = () => {
             id="name"
             placeholder="Genre Name"
           />
+
           <button type="button" onClick={save} className="btn btn-primary">
             Save Gender
           </button>
